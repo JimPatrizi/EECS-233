@@ -5,7 +5,6 @@
  * @author James Patrizi
  *
  */
-
 public class Annotation {
 	/**
 	 * The integer that will be annotated.

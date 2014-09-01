@@ -41,7 +41,6 @@ public class AnnotationTest {
 		n.setn(500);
 		assertEquals("Mutated n to 500, should return 500 and be true.", 500, n.getn());
 		}
-	
 	@Test
 	public void testToString(){
 		Annotation n1 = new Annotation(0);
