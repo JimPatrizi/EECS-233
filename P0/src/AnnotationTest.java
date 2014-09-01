@@ -34,4 +34,31 @@ public class AnnotationTest {
 	 *
 	 * For help with writing JUnit tests see junit.org
 	 */
+	@Test
+	public void testSetn(){
+		Annotation n = new Annotation(1);
+		assertEquals("Return should = 1", 1, n.getn());
+		n.setn(500);
+		assertEquals("Mutated n to 500, should return 500 and be true.", 500, n.getn());
+		}
+	
+	@Test
+	public void testToString(){
+		Annotation n1 = new Annotation(0);
+		Annotation n2 = new Annotation(15);
+		Annotation n3 = new Annotation(12);
+		Annotation n4 = new Annotation(10);
+		Annotation n5 = new Annotation(1);
+		assertEquals("n = 0, should return 0", "0", n1.toString());
+		assertEquals("n = 15, should return FizzBuzz", "FizzBuzz", n2.toString());
+		assertEquals("n = 12, should return Fizz", "Fizz", n3.toString());
+		assertEquals("n = 10, should return Buzz", "Buzz", n4.toString());
+		assertEquals("n = 1, should return 1", "1", n5.toString());
+	}
+	
+	@Test
+	public void testAnnotateList() {
+		assertEquals("Should annotate from 1 to 16 and match the sample from P0 pdf.", "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16", Annotation.annotateList(1,16));
+		assertEquals("Tests the case if start = end", "FizzBuzz", Annotation.annotateList(15,15));
+	}
 }
