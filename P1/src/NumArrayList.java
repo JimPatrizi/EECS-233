@@ -25,8 +25,12 @@ public class NumArrayList {
 		return this.capacity;
 	}
 	
-	public void add(double value){
-		
+	public void add(double value) throws ArrayIndexOutOfBoundsException{
+		if(num == capacity) {
+			throw new ArrayIndexOutOfBoundsException("list capacity exceeded");
+		}
+		this.list[num] = value;
+		num++;
 	}
 	
 		
