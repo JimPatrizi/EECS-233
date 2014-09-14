@@ -9,6 +9,8 @@ public class NumArrayListTest {
 	public void testNullConstructor() {
 		NumArrayList l = new NumArrayList();
 		assertEquals("A constructor that initalizes an empty list", 100, l.capacity());
+		l.add(1);
+		assertEquals("Size should now be 1", 1, l.size());
 	}
 	
 	@Test
@@ -38,7 +40,16 @@ public class NumArrayListTest {
 		l.add(1);
 		l.add(2);
 		l.add(3);
-		
+	}
+	
+	@Test
+	public void testInsert() {
+		NumArrayList l = new NumArrayList(3);
+		l.add(1);
+		l.add(3);
+		assertEquals("Size should be 2", 2, l.size());
+		l.insert(1,2);
+		assertEquals("Size should be 3", 3, l.size());
 	}
 }
 	
