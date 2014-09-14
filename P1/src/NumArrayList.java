@@ -6,7 +6,7 @@
  */
 public class NumArrayList {
 	
-	private double [] list = null; //list itself. 
+	public double [] list = null; //list itself. 
 	private int capacity; //max capacity of the list
 	private int num = 0; //current size of the list
 	private static final int DEFAULT_CAPACITY = 100; //default capacity
@@ -47,11 +47,16 @@ public class NumArrayList {
 	/**
 	 * Adds the specified double value to the list. also helps keep track of the total sum.
 	 * @param value - value to be added to array.
-	 * @throws ArrayIndexOutOfBoundsException - thrown if user tries to add to array and its already at capacity.
+	 * 
 	 */
-	public void add(double value) throws ArrayIndexOutOfBoundsException{
+	public void add(double value) {
 		if(num == capacity) {
-			throw new ArrayIndexOutOfBoundsException("list capacity exceeded");
+			double temp[] = new double[capacity*2];
+			for(int i = 0; i < list.length; i++){
+				temp[i] = list[i];
+			}
+			list = temp;
+			this.capacity = capacity * 2;
 		}
 		this.list[num] = value;
 		num++;
@@ -67,7 +72,10 @@ public class NumArrayList {
 			this.add(value);
 		}
 		else {
-			this.list[i-1] = value;
+			for(int j = list.length - 2 ; j >= i; j--){
+				list[j+1] = list[j];
+			}
+			list[i] = value;
 			num++;
 		}
 	
@@ -81,7 +89,10 @@ public class NumArrayList {
 	}
 	
 	public double lookup(int i){
-		return 0;
+		if(i > num){
+		throw new ArrayIndexOutOfBoundsException();
+		}
+		return this.list[i];
 	}
 	
 	public boolean equals(NumArrayList otherList){

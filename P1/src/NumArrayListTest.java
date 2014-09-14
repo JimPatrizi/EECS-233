@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 
@@ -50,6 +52,7 @@ public class NumArrayListTest {
 		assertEquals("Size should be 2", 2, l.size());
 		l.insert(1,2);
 		assertEquals("Size should be 3", 3, l.size());
+		System.out.println(Arrays.toString(l.list));
 	}
 }
 	
