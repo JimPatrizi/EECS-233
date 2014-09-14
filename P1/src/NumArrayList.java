@@ -1,5 +1,6 @@
 
 public class NumArrayList {
+	
 	private double [] list = null; //list itself. 
 	private int capacity; //max capacity of the list
 	private int num = 0; //current size of the list
@@ -19,5 +20,14 @@ public class NumArrayList {
 	public int size(){
 		return this.num;
 	}
+	
+	public int capacity(){
+		return this.capacity;
+	}
+	
+	public void add(double value){
+		
+	}
+	
 		
 }
