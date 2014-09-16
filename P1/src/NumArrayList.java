@@ -4,7 +4,7 @@
  * @author James Patrizi
  *
  */
-public class NumArrayList {
+public class NumArrayList implements NumList{
 	
 	public double [] list = null; //list itself. 
 	private int capacity; //max capacity of the list
@@ -95,17 +95,17 @@ public class NumArrayList {
 		return this.list[i];
 	}
 	
-	public boolean equals(NumArrayList otherList){
+	public boolean equals(NumList otherList){
 		return false;
 	}
 	
-	public void removeDupilcates() {
+	public void removeDuplicates(){
 		
 	}
 	
-	/**
-	public void toString() {
-		
+	
+	public String toString() {
+		return "no"; 
 	}
-	**/
+	
 }
