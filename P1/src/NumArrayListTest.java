@@ -22,7 +22,7 @@ public class NumArrayListTest {
     @Test
     public void testDefaultConstructorAndToString() {
         NumArrayList list = new NumArrayList();     
-        assertEquals("With no parameters, your constructors should initialize an list size 0. " + 
+        assertEquals("With no parameters, your constructors should initialize a list size 0. " + 
             "It also can be the problem in method TOSTRING.", 
             "", list.toString());
     }
@@ -90,13 +90,6 @@ public class NumArrayListTest {
      * and provide you with the feedback.
      */
 
-	@Test
-	public void testNullConstructor() {
-		NumArrayList l = new NumArrayList();
-		assertEquals("A constructor that initalizes an empty list", 100, l.capacity());
-		l.add(1);
-		assertEquals("Size should now be 1", 1, l.size());
-	}
 	
 	@Test
 	public void testUserDefinedConstructor() {
@@ -119,13 +112,6 @@ public class NumArrayListTest {
 		assertEquals("Size should be 3", 3, l.size());
 	}
 		
-	@Test(expected = IndexOutOfBoundsException.class)
-	public void testIndexOutOfBoundsException() {
-		NumArrayList l = new NumArrayList(2);
-		l.add(1);
-		l.add(2);
-		l.add(3);
-	}
 	
 	@Test
 	public void testInsert() {
@@ -135,7 +121,8 @@ public class NumArrayListTest {
 		assertEquals("Size should be 2", 2, l.size());
 		l.insert(1,2);
 		assertEquals("Size should be 3", 3, l.size());
-		System.out.println(Arrays.toString(l.list));
+		//System.out.println(Arrays.toString(l.list));
+		assertEquals("The new array should read because we inserted 2.0 at the 1 index","1.0 2.0 3.0",l.toString());
 	}
 }
 	

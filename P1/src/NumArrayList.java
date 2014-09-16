@@ -15,7 +15,7 @@ public class NumArrayList implements NumList{
      * Constructor that initializes list to default capacity. 
      */
 	public NumArrayList(){
-		this(DEFAULT_CAPACITY);
+		this(0);
 		}
 	
 	/**
@@ -51,12 +51,12 @@ public class NumArrayList implements NumList{
 	 */
 	public void add(double value) {
 		if(num == capacity) {
-			double temp[] = new double[capacity*2];
+			double temp[] = new double[1 + capacity*2];
 			for(int i = 0; i < list.length; i++){
 				temp[i] = list[i];
 			}
 			list = temp;
-			this.capacity = capacity * 2;
+			this.capacity = 1 + capacity * 2;
 		}
 		this.list[num] = value;
 		num++;
@@ -85,6 +85,11 @@ public class NumArrayList implements NumList{
 	}
 	
 	public boolean contains(double value){
+		for(int i = 0 ; i <= list.length-1 ; i++){
+			if(list[i] == value){
+				return true;
+			}
+		}
 		return false;
 	}
 	
@@ -105,7 +110,19 @@ public class NumArrayList implements NumList{
 	
 	
 	public String toString() {
-		return "no"; 
+		StringBuilder result = new StringBuilder();
+		//result.append("[");
+		for(int i = 0; i <= list.length-1; i++){
+			result.append(list[i]);
+			if(i != list.length-1){
+				result.append(" ");
+			}
+		}
+		//result.append("]");
+		return result.toString();
 	}
-	
 }
+		
+	
+	
+
