@@ -1,5 +1,5 @@
 /**
- * Represents an ordered sequence of double precison floating point numbers. Array Implementation.
+ * Represents an ordered sequence of double precision floating point numbers. Array Implementation.
  * EECS 233 P1
  * @author James Patrizi
  *
@@ -9,7 +9,7 @@ public class NumArrayList implements NumList{
 	public double [] list = null; //list itself. 
 	private int capacity; //max capacity of the list
 	private int num = 0; //current size of the list
-	private static final int DEFAULT_CAPACITY = 100; //default capacity
+	//private static final int DEFAULT_CAPACITY = 100; 
 	
     /**
      * Constructor that initializes list to default capacity. 
@@ -51,12 +51,12 @@ public class NumArrayList implements NumList{
 	 */
 	public void add(double value) {
 		if(num == capacity) {
-			double temp[] = new double[1 + capacity*2];
+			double temp[] = new double[capacity+1];
 			for(int i = 0; i < list.length; i++){
 				temp[i] = list[i];
 			}
 			list = temp;
-			this.capacity = 1 + capacity * 2;
+			this.capacity = 1+capacity;
 		}
 		this.list[num] = value;
 		num++;
@@ -101,18 +101,20 @@ public class NumArrayList implements NumList{
 	}
 	
 	public boolean equals(NumList otherList){
-		return false;
+		return (toString().equals(otherList.toString()));
 	}
 	
 	public void removeDuplicates(){
 		
 	}
 	
-	
+	/**
+	 * Converts the contents of the array to a string in the form "0.0 0.0 0.0".
+	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();
 		//result.append("[");
-		for(int i = 0; i <= list.length-1; i++){
+		for(int i = 0; i <= list.length-1; i++){ //traverses array and appends every index to result.
 			result.append(list[i]);
 			if(i != list.length-1){
 				result.append(" ");
