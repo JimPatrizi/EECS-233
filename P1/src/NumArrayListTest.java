@@ -124,5 +124,39 @@ public class NumArrayListTest {
 		//System.out.println(Arrays.toString(l.list));
 		assertEquals("The new array should read because we inserted 2.0 at the 1 index","1.0 2.0 3.0",l.toString());
 	}
+	
+	@Test
+	public void testRemove() {
+		NumArrayList l = new NumArrayList(3);
+		l.add(1);
+		l.add(4);
+		l.add(2);
+		assertEquals("This should contain", "1.0 4.0 2.0", l.toString());
+		l.remove(1);
+		assertEquals("This should now contain", "1.0 2.0 0.0", l.toString());
+	}
+	
+	@Test
+	public void testContains(){
+		NumArrayList l = new NumArrayList(3);
+		  l.add(1);
+		  l.add(4);
+		  l.add(2);
+		  l.add(3);
+		  assertTrue("Should return true for containing 2", l.contains(2));
+		}
+	
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testLookup(){
+		double a = 2.0;
+		NumArrayList l = new NumArrayList(3);
+		  l.add(1);
+		  l.add(4);
+		  l.add(2);
+		  l.add(3);
+		  assertEquals("Returns 2 at i", a, l.lookup(2),0);
+		  }
 }
 	

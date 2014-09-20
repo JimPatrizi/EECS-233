@@ -89,9 +89,29 @@ public class NumArrayList implements NumList {
 
 	}
 
+	/**
+	 * Removes an element from the array. shifts everything to left 1. 0.0 appended at the end.
+	 * @param i - The index of the double that is to be removed.
+	 */
 	public void remove(int i) {
+		if(i < num){
+			double temp[] = new double[capacity];
+			for(int j = 0; j < i; j++){
+				temp[j] = lookup(j);
+			}
+			num = num -1;
+			for(int k = i; k < num; k++){
+				temp[k]= list[k + 1];
+				}
+			list = temp;
+			
+		}
 	}
 
+	/**
+	 * Returns true if array contains the value, false if otherwise.
+	 * @param value - value that is checked to see if it is contained in the list.
+	 */
 	public boolean contains(double value) {
 		for (int i = 0; i <= list.length - 1; i++) {
 			if (list[i] == value) {
@@ -101,6 +121,10 @@ public class NumArrayList implements NumList {
 		return false;
 	}
 
+	/**
+	 * Looks up and returns the element at the i-th index.
+	 * @param i - index to be looked up and returns that element.
+	 */
 	public double lookup(int i) {
 		if (i > num) {
 			throw new ArrayIndexOutOfBoundsException();
@@ -108,6 +132,10 @@ public class NumArrayList implements NumList {
 		return this.list[i];
 	}
 
+	/**
+	 * Compares one num list to another. Converts elements to string form so can be compared from array or linked list.
+	 * @param otherList - other NumList to be compared.
+	 */
 	public boolean equals(NumList otherList) {
 		return (toString().equals(otherList.toString()));
 	}
@@ -118,6 +146,7 @@ public class NumArrayList implements NumList {
 
 	/**
 	 * Converts the contents of the array to a string in the form "0.0 0.0 0.0".
+	 * @return the contents of the array to string.
 	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();
