@@ -141,6 +141,15 @@ public class NumArrayList implements NumList {
 	}
 
 	public void removeDuplicates() {
+		for(int i = 0; i < this.size(); i++){
+			for(int j = i + 1; j < this.size(); j++){
+				if( list[j] == list[i]){
+					remove(j);
+					j--;
+					
+				}
+			}
+		}
 
 	}
 
@@ -151,11 +160,11 @@ public class NumArrayList implements NumList {
 	public String toString() {
 		StringBuilder result = new StringBuilder();
 		// result.append("[");
-		for (int i = 0; i <= list.length - 1; i++) { // traverses array and
+		for (int i = 0; i < num; i++) { // traverses array and
 														// appends every index
 														// to result.
 			result.append(list[i]);
-			if (i != list.length - 1) {
+			if (i != num - 1) {
 				result.append(" ");
 			}
 		}

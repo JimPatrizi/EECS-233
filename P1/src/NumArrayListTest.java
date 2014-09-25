@@ -133,7 +133,7 @@ public class NumArrayListTest {
 		l.add(2);
 		assertEquals("This should contain", "1.0 4.0 2.0", l.toString());
 		l.remove(1);
-		assertEquals("This should now contain", "1.0 2.0 0.0", l.toString());
+		assertEquals("This should now contain", "1.0 2.0", l.toString());
 	}
 	
 	@Test
@@ -158,5 +158,32 @@ public class NumArrayListTest {
 		  l.add(3);
 		  assertEquals("Returns 2 at i", a, l.lookup(2),0);
 		  }
+	
+	@Test
+	public void testRemoveDuplicates(){
+		NumArrayList l = new NumArrayList(3);
+		  l.add(1);
+		  l.add(2);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  
+		  l.removeDuplicates();
+		  assertEquals("Should be","1.0 2.0 3.0", l.toString());
+
+		
+	}
 }
 	

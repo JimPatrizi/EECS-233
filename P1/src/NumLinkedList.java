@@ -119,12 +119,33 @@ public class NumLinkedList implements NumList {
 	}
 
 	public void insert(int i, double value) {
-		// TODO Auto-generated method stub
-
+		LLNode ndptr = getHead();
+		LLNode node = new LLNode(value,null);
+		if(i == 0){
+			node.setNext(head);
+		}
+		if(i == size){
+			node.setNext(null);
+			this.getTail().setNext(node);
+			this.setTail(node);
+		}
+		else{
+			for(int index = 0; index < i -1; index++){
+				ndptr = ndptr.next();
+				LLNode keep = ndptr.next();
+				LLNode add = new LLNode(value,null);
+				ndptr.setNext(add);
+				ndptr.next().setNext(keep);
+				size++;
+				
+			}
+			
+		}
+			
 	}
 
 	public void remove(int i) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
