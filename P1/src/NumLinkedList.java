@@ -137,16 +137,30 @@ public class NumLinkedList implements NumList {
 				ndptr.setNext(add);
 				ndptr.next().setNext(keep);
 				size++;
-				
+				}
 			}
-			
 		}
-			
-	}
 
 	public void remove(int i) {
-		
-
+		LLNode ndptr = getHead();
+		if(i==0){
+			size--;
+			setHead(getHead().next());
+			}
+		else if(i == size -1){
+			for(int index = 0; index < i-1; index++){
+			ndptr.setNext(null);
+			setTail(ndptr);
+			size--;
+		}
+		}
+		else{
+			for(int index = 0; index < i-1; index++){
+				ndptr = ndptr.next();
+			}
+			ndptr.setNext(ndptr.next().next());
+			size--;
+		}
 	}
 
 	public boolean contains(double value) {
