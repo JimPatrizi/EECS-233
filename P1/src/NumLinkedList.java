@@ -8,7 +8,7 @@
 public class NumLinkedList implements NumList {
 
 	/**
-	 * Node class	
+	 * Node class
 	 */
 	private class LLNode {
 
@@ -104,6 +104,15 @@ public class NumLinkedList implements NumList {
 		return this.size;
 	}
 
+	/**
+	 * 
+	 * @param value
+	 *            -sets size to this value
+	 */
+	public void setSize(int value) {
+		this.size = value;
+	}
+
 	public void add(double value) {
 		if (size == 0) {
 			setHead(new LLNode(value, null));
@@ -120,42 +129,39 @@ public class NumLinkedList implements NumList {
 
 	public void insert(int i, double value) {
 		LLNode ndptr = getHead();
-		LLNode node = new LLNode(value,null);
-		if(i == 0){
+		LLNode node = new LLNode(value, null);
+		if (i == 0) {
 			node.setNext(head);
 		}
-		if(i == size){
+		if (i == size) {
 			node.setNext(null);
 			this.getTail().setNext(node);
 			this.setTail(node);
-		}
-		else{
-			for(int index = 0; index < i -1; index++){
+		} else {
+			for (int index = 0; index < i - 1; index++) {
 				ndptr = ndptr.next();
 				LLNode keep = ndptr.next();
-				LLNode add = new LLNode(value,null);
+				LLNode add = new LLNode(value, null);
 				ndptr.setNext(add);
 				ndptr.next().setNext(keep);
 				size++;
-				}
 			}
 		}
+	}
 
 	public void remove(int i) {
 		LLNode ndptr = getHead();
-		if(i==0){
+		if (i == 0) {
 			size--;
 			setHead(getHead().next());
+		} else if (i == size - 1) {
+			for (int index = 0; index < i - 1; index++) {
+				ndptr.setNext(null);
+				setTail(ndptr);
+				size--;
 			}
-		else if(i == size -1){
-			for(int index = 0; index < i-1; index++){
-			ndptr.setNext(null);
-			setTail(ndptr);
-			size--;
-		}
-		}
-		else{
-			for(int index = 0; index < i-1; index++){
+		} else {
+			for (int index = 0; index < i - 1; index++) {
 				ndptr = ndptr.next();
 			}
 			ndptr.setNext(ndptr.next().next());
@@ -165,22 +171,21 @@ public class NumLinkedList implements NumList {
 
 	public boolean contains(double value) {
 		LLNode ndptr = getHead();
-		for(int index = 0; index < size; index++){
-			if(ndptr.getElement() == value){
+		for (int index = 0; index < size; index++) {
+			if (ndptr.getElement() == value) {
 				return true;
 			}
 			ndptr = ndptr.next();
-			}
+		}
 		return false;
 	}
 
 	public double lookup(int i) {
 		LLNode ndptr = getHead();
-		for(int index = 0; index < i; index++){
-			try{
+		for (int index = 0; index < i; index++) {
+			try {
 				ndptr.next();
-			}
-			catch(IndexOutOfBoundsException c){
+			} catch (IndexOutOfBoundsException c) {
 				System.out.println(c.getMessage());
 			}
 		}
@@ -192,7 +197,20 @@ public class NumLinkedList implements NumList {
 	}
 
 	public void removeDuplicates() {
-		// TODO Auto-generated method stub
+		NumLinkedList noduplist = new NumLinkedList();
+		LLNode ndptr = getHead();
+		for (int index = 0; index < size - 1; index++) {
+			if (!noduplist.contains(lookup(index))) {
+				noduplist.add(lookup(index));
+			}
+			ndptr = ndptr.next();
+		}
+		if (!noduplist.contains(ndptr.getElement())) {
+			noduplist.add(ndptr.getElement());
+		}
+		setHead(noduplist.getHead());
+		setTail(noduplist.getTail());
+		setSize(noduplist.size());
 
 	}
 
@@ -202,13 +220,7 @@ public class NumLinkedList implements NumList {
 		} else {
 			StringBuilder result = new StringBuilder();
 			LLNode ndptr = getHead();
-			for (; ndptr.next() != getTail(); ndptr = ndptr.next()) {// will
-																		// loop
-																		// to
-																		// second
-																		// to
-																		// last
-																		// node.
+			for (; ndptr.next() != getTail(); ndptr = ndptr.next()) {
 				result.append(ndptr.getElement());
 				result.append(" ");
 			}
