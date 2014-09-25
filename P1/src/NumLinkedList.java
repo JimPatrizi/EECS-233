@@ -164,13 +164,27 @@ public class NumLinkedList implements NumList {
 	}
 
 	public boolean contains(double value) {
-		// TODO Auto-generated method stub
+		LLNode ndptr = getHead();
+		for(int index = 0; index < size; index++){
+			if(ndptr.getElement() == value){
+				return true;
+			}
+			ndptr = ndptr.next();
+			}
 		return false;
 	}
 
 	public double lookup(int i) {
-		// TODO Auto-generated method stub
-		return 0;
+		LLNode ndptr = getHead();
+		for(int index = 0; index < i; index++){
+			try{
+				ndptr.next();
+			}
+			catch(IndexOutOfBoundsException c){
+				System.out.println(c.getMessage());
+			}
+		}
+		return ndptr.getElement();
 	}
 
 	public boolean equals(NumList otherList) {
