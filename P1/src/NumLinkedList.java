@@ -154,7 +154,7 @@ public class NumLinkedList implements NumList {
 	}
 	/**
 	 * Removes the node at ith spot in the list.
-	 * @param i - the index of what node we want to remove.
+	 * @param i - the index of what node we want to remove. 
 	 */
 	public void remove(int i) {
 		LLNode ndptr = getHead();
@@ -178,7 +178,7 @@ public class NumLinkedList implements NumList {
 
 	/**
 	 * Tells us if the list contains the specified value, returns true for yes, false for no.
-	 * @param value - the value that is checked if its in the list or not.
+	 * @param value - the value that is checked if its in the list or not. The value.
 	 */
 	public boolean contains(double value) {
 		LLNode ndptr = getHead();
