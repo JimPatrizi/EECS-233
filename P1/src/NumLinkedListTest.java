@@ -30,10 +30,12 @@ public class NumLinkedListTest {
         list.add(1.0);
         list.add(3.0);
         list.add(2.0);
+        System.out.println(list);
 
         assertEquals("Add method should add element to the end of list each time. " +
             "It's also can be the problem in method TOSTRING.",
             "1.0 3.0 2.0", list.toString());
+        
     }
 
     @Test
@@ -85,7 +87,34 @@ public class NumLinkedListTest {
      * When you turn in your draft (and final) we will run our own test suite on your code 
      * and provide you with the feedback.
      */
+    
+    @Test
+    public void testInsert(){
+    	 NumLinkedList listA = new NumLinkedList();
+    	 NumLinkedList listB = new NumLinkedList();
+    	 listB.add(1.0);
+    	 listB.add(2.0);
+    	 listB.add(3.0);
+         listA.add(1.0);
+         listA.add(3.0);
+         listA.insert(1,2.0);
+         System.out.println(listA);
+         System.out.println(listB);
+         assertTrue("After the insert,list A should = B ", listA.equals(listB));
+    }
+    
+    @Test
+    public void testRemove(){
+    NumLinkedList list = new NumLinkedList();
 
+    list.add(1.0);
+    list.add(3.0);
+    list.add(2.0);
+    list.remove(1);
+    assertEquals("","1.0 2.0", list.toString());
+    }
+
+    
 }
 
 
