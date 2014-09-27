@@ -52,7 +52,7 @@ public class NumSet {
 	 * @param S2 - set 2
 	 * @return - a new NumSet where S1 intersects S2, or S2 intersects S1 depending on size.
 	 */
-	public NumSet intersect(NumSet S1, NumSet S2){
+	public static NumSet intersect(NumSet S1, NumSet S2){
 		if(S1.size() > S2.size()){
 			int intersectSize = 0;
 			for(int i = 0; i < S2.size(); i++){
