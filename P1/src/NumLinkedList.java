@@ -198,9 +198,10 @@ public class NumLinkedList implements NumList {
 	public double lookup(int i) {
 		LLNode ndptr = getHead();
 		for (int index = 0; index < i; index++) {
-			try {
-				ndptr.next();
-			} catch (IndexOutOfBoundsException c) {
+			try{
+			ndptr= ndptr.next();
+		}
+			 catch (IndexOutOfBoundsException c) {
 				System.out.println(c.getMessage());
 			}
 		}

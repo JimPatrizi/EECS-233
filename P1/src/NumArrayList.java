@@ -140,6 +140,9 @@ public class NumArrayList implements NumList {
 		return (toString().equals(otherList.toString()));
 	}
 
+	/**
+	 * Removes all duplicates in a list so that it contains only the first occurance.
+	 */
 	public void removeDuplicates() {
 		for(int i = 0; i < this.size(); i++){
 			for(int j = i + 1; j < this.size(); j++){
@@ -150,8 +153,7 @@ public class NumArrayList implements NumList {
 				}
 			}
 		}
-
-	}
+		}
 
 	/**
 	 * Converts the contents of the array to a string in the form "0.0 0.0 0.0".

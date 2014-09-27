@@ -125,6 +125,42 @@ public class NumLinkedListTest {
         assertTrue("list contains 3.0",list.contains(3.0));
         
     }
+    
+    @Test
+    public void testLookup(){
+    	NumLinkedList list = new NumLinkedList();
+
+        list.add(1.0);
+        list.add(3.0);
+        list.add(2.0);
+        System.out.println(list.lookup(2));
+        assertEquals("Contains 2.0 at 2",2.0,list.lookup(2),0);
+    }
+    
+    @Test
+    public void testRemoveDuplicates(){
+    	NumLinkedList l = new NumLinkedList();
+		  l.add(1);
+		  l.add(2);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  l.add(2);
+		  l.add(3);
+		  
+		  l.removeDuplicates();
+		  assertEquals("Should be","1.0 2.0 3.0", l.toString());
+    }
 
     
 }
