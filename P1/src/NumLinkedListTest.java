@@ -113,6 +113,18 @@ public class NumLinkedListTest {
     list.remove(1);
     assertEquals("","1.0 2.0", list.toString());
     }
+    
+    @Test
+    public void testContains(){
+    	NumLinkedList list = new NumLinkedList();
+
+        list.add(1.0);
+        list.add(3.0);
+        list.add(2.0);
+        assertTrue("list contains 2.0",list.contains(2.0));
+        assertTrue("list contains 3.0",list.contains(3.0));
+        
+    }
 
     
 }
