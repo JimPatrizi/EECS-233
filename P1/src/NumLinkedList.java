@@ -4,7 +4,7 @@
  * 
  * @author James Patrizi
  *
- */
+ */	
 public class NumLinkedList implements NumList {
 
 	/**
@@ -106,15 +106,15 @@ public class NumLinkedList implements NumList {
 
 	/**
 	 * 
-	 * @param value
-	 *            -sets size to this value
+	 * @param value -sets size to this value
 	 */
 	public void setSize(int value) {
 		this.size = value;
 	}
-	
+
 	/**
 	 * Adds a value to the list.
+	 * 
 	 * @param value - the value to be added to the list.
 	 */
 	public void add(double value) {
@@ -133,28 +133,30 @@ public class NumLinkedList implements NumList {
 
 	/**
 	 * Inserts the specified value at point i in the list.
+	 * 
 	 * @param i - the spot in the list where we want to insert the value.
 	 * @param value - the value to be inserted in the list.
 	 */
 	public void insert(int i, double value) {
 		LLNode ndptr = getHead();
-		if (i >=size()) {
+		if (i >= size()) {
 			add(value);
-		}
-			else {
+		} else {
 			for (int index = 0; index < i - 1; index++) {
 				ndptr = ndptr.next();
 			}
-				LLNode save = ndptr.next();
-				LLNode adding = new LLNode(value,null);
-				ndptr.setNext(adding);
-				ndptr.next().setNext(save);
-				setSize(size()+1);
-			}
+			LLNode save = ndptr.next();
+			LLNode adding = new LLNode(value, null);
+			ndptr.setNext(adding);
+			ndptr.next().setNext(save);
+			setSize(size() + 1);
+		}
 	}
+
 	/**
 	 * Removes the node at ith spot in the list.
-	 * @param i - the index of what node we want to remove. 
+	 * 
+	 * @param i - the index of what node we want to remove.
 	 */
 	public void remove(int i) {
 		LLNode ndptr = getHead();
@@ -177,8 +179,11 @@ public class NumLinkedList implements NumList {
 	}
 
 	/**
-	 * Tells us if the list contains the specified value, returns true for yes, false for no.
-	 * @param value - the value that is checked if its in the list or not. The value.
+	 * Tells us if the list contains the specified value, returns true for yes,
+	 * false for no.
+	 * 
+	 * @param value  - the value that is checked if its in the list or not. The
+	 *            value.
 	 */
 	public boolean contains(double value) {
 		LLNode ndptr = getHead();
@@ -192,16 +197,16 @@ public class NumLinkedList implements NumList {
 	}
 
 	/**
-	 * Looks up the node at index i and returns the element in that node. 
+	 * Looks up the node at index i and returns the element in that node.
+	 * 
 	 * @param i - index in the list to be looked up.
 	 */
 	public double lookup(int i) {
 		LLNode ndptr = getHead();
 		for (int index = 0; index < i; index++) {
-			try{
-			ndptr= ndptr.next();
-		}
-			 catch (IndexOutOfBoundsException c) {
+			try {
+				ndptr = ndptr.next();
+			} catch (IndexOutOfBoundsException c) {
 				System.out.println(c.getMessage());
 			}
 		}
@@ -209,8 +214,10 @@ public class NumLinkedList implements NumList {
 	}
 
 	/**
-	 * Checks if the equivalent numlist is equal by converting both lists to strings and comparing their equivalence. 
-	 * @param otherList- the other NumList that is being compared to this list.
+	 * Checks if the equivalent numlist is equal by converting both lists to
+	 * strings and comparing their equivalence.
+	 * 
+	 * @param otherList - the other NumList that is being compared to this list.
 	 * @return true if the list is equivalent.
 	 */
 	public boolean equals(NumList otherList) {
@@ -239,7 +246,9 @@ public class NumLinkedList implements NumList {
 	}
 
 	/**
-	 * Convert list to string with no braces or spaces in between the ends of the string.
+	 * Convert list to string with no braces or spaces in between the ends of
+	 * the string.
+	 * 
 	 * @return - the list in string format.
 	 */
 	public String toString() {

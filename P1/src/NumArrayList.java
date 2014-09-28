@@ -90,27 +90,32 @@ public class NumArrayList implements NumList {
 	}
 
 	/**
-	 * Removes an element from the array. shifts everything to left 1. 0.0 appended at the end.
-	 * @param i - The index of the double that is to be removed.
+	 * Removes an element from the array. shifts everything to left 1. 0.0
+	 * appended at the end.
+	 * 
+	 * @param i
+	 *            - The index of the double that is to be removed.
 	 */
 	public void remove(int i) {
-		if(i < num){
+		if (i < num) {
 			double temp[] = new double[capacity];
-			for(int j = 0; j < i; j++){
+			for (int j = 0; j < i; j++) {
 				temp[j] = lookup(j);
 			}
-			num = num -1;
-			for(int k = i; k < num; k++){
-				temp[k]= list[k + 1];
-				}
+			num = num - 1;
+			for (int k = i; k < num; k++) {
+				temp[k] = list[k + 1];
+			}
 			list = temp;
-			
+
 		}
 	}
 
 	/**
 	 * Returns true if array contains the value, false if otherwise.
-	 * @param value - value that is checked to see if it is contained in the list.
+	 * 
+	 * @param value
+	 *            - value that is checked to see if it is contained in the list.
 	 */
 	public boolean contains(double value) {
 		for (int i = 0; i <= list.length - 1; i++) {
@@ -123,7 +128,9 @@ public class NumArrayList implements NumList {
 
 	/**
 	 * Looks up and returns the element at the i-th index.
-	 * @param i - index to be looked up and returns that element.
+	 * 
+	 * @param i
+	 *            - index to be looked up and returns that element.
 	 */
 	public double lookup(int i) {
 		if (i > num) {
@@ -133,38 +140,43 @@ public class NumArrayList implements NumList {
 	}
 
 	/**
-	 * Compares one num list to another. Converts elements to string form so can be compared from array or linked list.
-	 * @param otherList - other NumList to be compared.
+	 * Compares one num list to another. Converts elements to string form so can
+	 * be compared from array or linked list.
+	 * 
+	 * @param otherList
+	 *            - other NumList to be compared.
 	 */
 	public boolean equals(NumList otherList) {
 		return (toString().equals(otherList.toString()));
 	}
 
 	/**
-	 * Removes all duplicates in a list so that it contains only the first occurance.
+	 * Removes all duplicates in a list so that it contains only the first
+	 * Occurrence.
 	 */
 	public void removeDuplicates() {
-		for(int i = 0; i < this.size(); i++){
-			for(int j = i + 1; j < this.size(); j++){
-				if( list[j] == list[i]){
+		for (int i = 0; i < this.size(); i++) {
+			for (int j = i + 1; j < this.size(); j++) {
+				if (list[j] == list[i]) {
 					remove(j);
 					j--;
-					
+
 				}
 			}
 		}
-		}
+	}
 
 	/**
 	 * Converts the contents of the array to a string in the form "0.0 0.0 0.0".
+	 * 
 	 * @return the contents of the array to string.
 	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();
 		// result.append("[");
 		for (int i = 0; i < num; i++) { // traverses array and
-														// appends every index
-														// to result.
+										// appends every index
+										// to result.
 			result.append(list[i]);
 			if (i != num - 1) {
 				result.append(" ");
