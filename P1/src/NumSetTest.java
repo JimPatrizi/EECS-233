@@ -4,7 +4,7 @@ import org.junit.Test;
 
 /**
  * EECS 233 P1
- * @author James Patrizi
+ * @author James Patrizi hehe
  *
  */
 public class NumSetTest {
