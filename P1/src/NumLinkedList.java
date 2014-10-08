@@ -8,7 +8,7 @@
 public class NumLinkedList implements NumList {
 
 	/**
-	 * Node class
+	 * Node classbleh
 	 */
 	private class LLNode {
 
