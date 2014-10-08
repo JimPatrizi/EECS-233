@@ -4,7 +4,7 @@ import org.junit.Test;
 
 /**
  * EECS 233 P1
- * @author James Patrizi
+ * @author James Patrizi hehe
  *
  */
 public class NumSetTest {
@@ -37,7 +37,7 @@ public class NumSetTest {
 		NumSet set = new NumSet(array);
 		NumSet set1 = new NumSet(array1);
 		NumSet result = NumSet.intersect(set, set1);
-		// System.out.println(result);
+		// System.out.println(result);asdadad
 		assertEquals("Should be size size 4", 4, result.size());
 		assertTrue(result.contains(3));
 		assertTrue(result.contains(4));
