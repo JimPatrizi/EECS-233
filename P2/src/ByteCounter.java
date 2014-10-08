@@ -1,6 +1,6 @@
 /**
  * 
- * @author Jim
+ * @author Jim Patrizi
  *
  */
 public class ByteCounter {
