@@ -49,6 +49,14 @@ public class ByteCounter {
 		return null;
 	}
 	
+	private boolean contains(byte[] bArray, byte b){
+		for(int i = 0; i < bArray.length ; i++){
+			if(bArray[i]== b){
+				return true;
+			}
+		}
+				return false;
+	}
 	public void setOrder(String order){
 		
 	}

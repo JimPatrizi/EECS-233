@@ -1,14 +1,17 @@
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * 
  * @author James Patrizi
  * EECS 233 P2
  * Constructs the initial linked list of HuffmanNodes to build the HuffmanTree.
- * @param <T>
+ * @param <T> generic 
  */
 public class HuffmanList<T> implements Iterable<T>{
 
+	public LinkedList<HuffmanNode> list;
+	
 	public HuffmanList(byte[] b){
 		
 	}
