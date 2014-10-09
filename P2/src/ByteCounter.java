@@ -38,8 +38,11 @@ public class ByteCounter {
 	}
 	
 	public int[] getCount(byte[] b){
-		int[] barray = {0};
-		return barray;
+		int[] count = new int[b.length];
+		for(int i=0; i < b.length;i++){
+			count[i] = this.getCount(b[i]);
+		}
+		return count;
 	}
 	
 	public byte[] getElements(){
