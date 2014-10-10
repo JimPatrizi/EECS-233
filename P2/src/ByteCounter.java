@@ -12,7 +12,6 @@ import java.nio.file.Paths;
  */
 public class ByteCounter {
 	
-	//public ArrayList<Byte> originalList;
 	public ArrayList<Byte> byteList = new ArrayList<Byte>();
 	public ArrayList<Integer> intList = new ArrayList<Integer>();
 	
@@ -44,7 +43,7 @@ public class ByteCounter {
 		int [] array = new int[b.length];
 		for(int i = 0; i < b.length ; i++){
 			//for( byte i : b){
-			array[i]= this.getCount(b);//use for(int i = 0; i < L ; i++) { a[i]}
+			array[i]= getCount(b[i]);
 		}
 		return array;
 	}
@@ -53,16 +52,7 @@ public class ByteCounter {
 	public byte[] getElements(){
 		return null;
 	}
-	/*
-	private boolean contains(byte[] bArray, byte b){
-		for(int i = 0; i < bArray.length ; i++){
-			if(bArray[i]== b){
-				return true;
-			}
-		}
-				return false;
-	}
-	*/
+	
 	public void setOrder(String order){
 		
 	}
