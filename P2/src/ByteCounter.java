@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,44 +12,48 @@ import java.nio.file.Paths;
  */
 public class ByteCounter {
 	
-	private byte[] byteArray;
+	//public ArrayList<Byte> originalList;
+	public ArrayList<Byte> byteList = new ArrayList<Byte>();
+	public ArrayList<Integer> intList = new ArrayList<Integer>();
 	
 	public ByteCounter(byte[] b){
-		this.byteArray = b;
+		//originalList = new ArrayList<Byte>(Arrays.asList(b));
+		for(byte i : b){
+			if(!byteList.contains(i)){
+				byteList.add(i);
+				intList.add(1);
+			}
+			else{
+				Integer m = intList.get(byteList.indexOf(i));
+				intList.set(byteList.indexOf(i), m+1);
+			}
+		}
 	}
 	
-	public ByteCounter(String file){
-		Path path = Paths.get(file);
-		try {
-			this.byteArray = Files.readAllBytes(path);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("File not found");
-		}
+	public ByteCounter(String file) throws IOException {
+		this(Files.readAllBytes(Paths.get(file)));
 	}
 	
 	public int getCount(byte b){
-		int count = 0;
-		for(int i=0; i < byteArray.length ; i++){
-			if(byteArray[i]== b){
-				count++;
-			}
-		}
-		return count;
+		int index= byteList.indexOf(b);
+		return intList.get(index);
 	}
 	
+	
 	public int[] getCount(byte[] b){
-		int[] count = new int[b.length];
-		for(int i=0; i < b.length;i++){
-			count[i] = this.getCount(b[i]);
+		int [] array = new int[b.length];
+		for(int i = 0; i < b.length ; i++){
+			//for( byte i : b){
+			array[i]= this.getCount(b);//use for(int i = 0; i < L ; i++) { a[i]}
 		}
-		return count;
+		return array;
 	}
+		
 	
 	public byte[] getElements(){
 		return null;
 	}
-	
+	/*
 	private boolean contains(byte[] bArray, byte b){
 		for(int i = 0; i < bArray.length ; i++){
 			if(bArray[i]== b){
@@ -57,6 +62,7 @@ public class ByteCounter {
 		}
 				return false;
 	}
+	*/
 	public void setOrder(String order){
 		
 	}
