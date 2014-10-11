@@ -90,8 +90,11 @@ public class  ByteCounterFundTest {
 	public void testFormatToString() {
     	byte test [] = {(byte)'a', (byte)'b'};
     	ByteCounter byteCount = new ByteCounter(test);
-    	byteCount.toString("byte");
-    	assertTrue("Method toString returns the bytes and their counts based on the format provided",
-			true);
+    	assertEquals("Method toString returns the bytes and "
+    			+ "their counts based on the format provided","97:1 98:1",byteCount.toString());
+    	assertEquals("Method toString returns the bytes and "
+    			+ "their counts based on the format provided","a:1 b:1",byteCount.toString("char"));
+    	
+    	
 	}
 }

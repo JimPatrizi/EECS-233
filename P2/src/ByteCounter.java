@@ -74,6 +74,27 @@ public class ByteCounter {
 	}
 	
 	public String toString(String format){
-		return"";
+		if(format == "char"){
+		byte[] array = new byte[1];
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < byteList.size() -1;i++){
+			array[0] = byteList.get(i);
+			String aString = new String(array);
+			sb.append(aString.trim());
+			sb.append(':');
+			sb.append(intList.get(i));
+			sb.append(" ");
+		}
+		array[0]= byteList.get(byteList.size()-1);
+		String aString = new String(array);
+		sb.append(aString.trim());
+		sb.append(':');
+		sb.append(intList.get(byteList.size()-1));
+		return sb.toString();
+	}
+		else{
+			return this.toString();
+			
+		}
 	}
 }
