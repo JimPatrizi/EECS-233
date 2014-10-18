@@ -93,7 +93,7 @@ public class HuffmanListFundTest {
      */
 	
 	@Test
-	public void testByteAndIntegerArrayConstructor() {
+	public void testByteAndIntegerArrayConstructor() throws Exception {
 		HuffmanList list = new HuffmanList(new byte[]{(byte)'a',(byte)'b'},
 				new int[]{1,2});
 	}

@@ -37,14 +37,14 @@ public class HuffmanCodeFundTest {
 	}
 	
 	@Test
-	public void testByteAndCountArraysConstructor() {
+	public void testByteAndCountArraysConstructor() throws Exception {
     	HuffmanCode hc = new HuffmanCode(new byte [] {(byte)'a', (byte)'b'}, new int [] {2, 3});
     	assertTrue("The constructor make a HuffmanCode using byte and count arrays",
 			true);
 	}
 	
 	@Test
-	public void testCodeMethod() {
+	public void testCodeMethod() throws Exception {
     	HuffmanCode hc = new HuffmanCode(new byte [] {(byte)'a', (byte)'b'}, new int [] {2, 3});
     	boolean[] code = hc.code((byte)'a');
     	assertTrue("This method reurns the code of specific byte",
@@ -52,7 +52,7 @@ public class HuffmanCodeFundTest {
 	}
 	
 	@Test
-	public void testToStringMethod() {
+	public void testToStringMethod() throws Exception {
     	HuffmanCode hc = new HuffmanCode(new byte [] {(byte)'a', (byte)'b'}, new int [] {2, 3});
     	String s = hc.toString();
     	assertTrue("This method returns astring containing the table of the binary encodings of each byte in the Huffman tree",

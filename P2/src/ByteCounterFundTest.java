@@ -55,13 +55,12 @@ public class  ByteCounterFundTest {
     public void testGetElements() {
     	byte test [] = {(byte)'h',(byte)'e', (byte)'l', (byte)'l',(byte)'o'};
        	ByteCounter byteCount = new ByteCounter(test); 
-    	byte elements [] =byteCount.getElements();
+    	byte elements [] = byteCount.getElements();
         assertArrayEquals("get Elements method should return an array of byte " + 
-            " that has a non-zero count", new byte[]{(byte)'h', (byte)'e', (byte)'l',(byte)'o'},elements);
+            " that has a non-zero count", new byte[]{(byte)'e', (byte)'h', (byte)'l',(byte)'o'},elements);
         assertEquals("get Elements method should return an array of byte " + 
             " that has a non-zero count", 4,elements.length);
     }
-    
     /* Other JUnit tests.
      * 
      * Write your own JUnit tests below to check the correctness of your implementation.
@@ -78,23 +77,36 @@ public class  ByteCounterFundTest {
      */
     
     @Test
-	public void testSetOrder() {
-    	byte test [] = {(byte)'a', (byte)'b'};
-    	ByteCounter byteCount = new ByteCounter(test);
-    	byteCount.setOrder("byte");
-    	assertTrue("Method setOrder define the order of the current object",
-			true);
-	}
+   	public void testSetOrder() throws IOException {
+       	byte test [] = {(byte)'b', (byte) 'c', (byte)'a', (byte) 'c', (byte) 'b'};
+       	ByteCounter byteCount = new ByteCounter(test);
+       	byteCount.setOrder("byte");
+       	assertEquals("Strings should be equal", "97:1 98:2 99:2" , byteCount.toString());
+       	byteCount.setOrder("countInc");
+       	assertEquals("Strings should be equal", "97:1 98:2 99:2" , byteCount.toString());
+       	byte test1 [] = {(byte)'e', (byte) 'd', (byte)'a', (byte) 'd', (byte) 'b'};
+       	ByteCounter byteCount1 = new ByteCounter(test1);
+       	byteCount1.setOrder("countInc");
+       	assertEquals("Strings should be equal", "97:1 98:1 101:1 100:2" , byteCount1.toString());
+       	byte test2 [] = {(byte)'e', (byte) 'd', (byte)'a', (byte) 'd', (byte) 'b'};
+       	ByteCounter byteCount2 = new ByteCounter(test2);
+       	byteCount2.setOrder("countDec");
+       	assertEquals("Strings should be equal", "100:2 97:1 98:1 101:1" , byteCount2.toString());
+       	
+       	ByteCounter byteCount3 = new ByteCounter("file.txt");
+       	byteCount3.setOrder("countInc");
+       	assertEquals("Strings should be equal", "32:1 100:1 101:1 104:1 114:1 119:1 111:2 108:3" , byteCount3.toString());
+       }
     
     @Test
-	public void testFormatToString() {
-    	byte test [] = {(byte)'a', (byte)'b'};
-    	ByteCounter byteCount = new ByteCounter(test);
-    	assertEquals("Method toString returns the bytes and "
-    			+ "their counts based on the format provided","97:1 98:1",byteCount.toString());
-    	assertEquals("Method toString returns the bytes and "
-    			+ "their counts based on the format provided","a:1 b:1",byteCount.toString("char"));
-    	
-    	
-	}
+   	public void testFormatToString() {
+       	byte test [] = {(byte)'a', (byte)'b'};
+       	ByteCounter byteCount = new ByteCounter(test);
+       	assertEquals("Strings should be equal", "97:1 98:1" , byteCount.toString("byte"));
+       	assertEquals("Strings should be equal", "a:1 b:1" , byteCount.toString("char"));
+       	byte test1 [] = {(byte)'b', (byte)'t', (byte)'m', (byte)'m', (byte)'y', (byte)'y'};
+       	ByteCounter byteCount1 = new ByteCounter(test1);
+       	assertEquals("Strings should be equal", "98:1 116:1 109:2 121:2" , byteCount1.toString("byte"));
+       	assertEquals("Strings should be equal", "b:1 t:1 m:2 y:2" , byteCount1.toString("char"));
+       }
 }
