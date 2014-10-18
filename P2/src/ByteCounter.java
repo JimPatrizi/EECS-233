@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 public class ByteCounter {
 
 	/**
-	 * Initalizes an ArrayList of Bytes
+	 * Initializes an ArrayList of Bytes
 	 */
 	public ArrayList<Byte> byteList = new ArrayList<Byte>(); 
 
