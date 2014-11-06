@@ -50,12 +50,22 @@ public class Tokenizer {
 	 * @param array - String array to be formatted and put into an array list.
 	 */
 	public Tokenizer(String[] array){
-		String[] formatted = array;
-		for(int i = 0; i < array.length; i++){
-			wordlist.add(formatted[i].replaceAll("\\W","").toLowerCase().trim());
+		String formatted = arrayStringToString(array);
+		String[] split = new String[100];
+		split = formatted.trim().split("\\s+");
+		for(int i = 0; i < split.length; i++){
+			wordlist.add(split[i].toLowerCase().replaceAll("\\p{Punct}+",""));
 		}
 	}
 	
+	private String arrayStringToString(String[] array){
+		StringBuilder sb = new StringBuilder();
+		for(String i : array){
+			sb.append(i);
+			sb.append(" ");
+		}
+		return sb.toString();
+	}
 	/**
 	 * 
 	 * @return- returns the word list made by the constructor.
