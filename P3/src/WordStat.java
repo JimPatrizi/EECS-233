@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 
  * @author James Patrizi
@@ -6,6 +8,9 @@
  *
  */
 public class WordStat {
+	
+	public ArrayList<String> list;
+	public HashTable table;
 	
 	public WordStat(String file){
 		
@@ -44,6 +49,14 @@ public class WordStat {
 	}
 	
 	public String[] mostCommonCollocs(int k, String baseWord, int i){
+		return null;
+	}
+	
+	public String[] mostCommonCollocsExc(int k, String baseWord, int i, ArrayList<String> exclusions){
+		return null;
+	}
+	
+	public String generateWordString(int k, String startWord){
 		return null;
 	}
 	
