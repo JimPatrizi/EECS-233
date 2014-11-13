@@ -10,9 +10,36 @@ import java.util.LinkedList;
  */
 public class HashTable {
 	
+	/**
+	 * ArrayList acting as a hashtable for our implementation for use with word stat. 
+	 */
 	private ArrayList<LinkedList<HashEntry>> hashtable = new ArrayList<LinkedList<HashEntry>>();
+	
+	/**
+	 * The table's max size
+	 */
 	public int tablesize = 0;
+	
+	/**
+	 * The number of items currently in the table.
+	 */
 	public int numItems = 0;
+	
+	public ArrayList<HashEntry> arrayform;
+	
+	
+	 
+	public ArrayList<HashEntry> getHashArray(){
+		arrayform = new ArrayList<HashEntry>(numItems);
+		for(LinkedList<HashEntry> list : hashtable){
+			for(HashEntry item : list){
+				arrayform.add(item);
+			}
+		
+		}
+		return arrayform;
+	}
+	
 
 	
 	/**
@@ -119,6 +146,9 @@ public class HashTable {
 		int index = Math.abs(key.hashCode()) % tablesize;
 		LinkedList<HashEntry> list = hashtable.get(index);
 		if(list.size()==0){
+			put(key,value);
+		}
+		else if(!list.contains(new HashEntry(key,value))){
 			put(key,value);
 		}
 		else {

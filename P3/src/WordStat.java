@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * 
@@ -11,17 +12,41 @@ public class WordStat {
 	
 	public ArrayList<String> list;
 	public HashTable table;
+	public ArrayList<HashEntry> ranklist;
+ 	
 	
 	public WordStat(String file){
 		
 	}
 	
 	public WordStat(String[] array){
+		list = new Tokenizer(array).wordList();
+		table = new HashTable(list.size() * 2);
+		for(String i : list){
+			int count = table.get(i);
+			if(count == -1){
+				table.update(i,1);
+			}
+			else{
+				table.update(i, count+1);
+			}
+		}
+		ranklist = table.getHashArray();
 		
-	}
+			
+		}
+			
+		
+	
 	
 	public int wordCount(String word){
-		return 0;
+		word = word.toLowerCase().replaceAll("\\s+","").replaceAll("\\W","");
+		if(table.get(word) == -1){
+			return 0;
+		}
+		else{
+			return table.get(word);
+		}
 	}
 	
 	public int wordRank(String word){

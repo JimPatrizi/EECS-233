@@ -5,7 +5,7 @@
  * Entries in the HashTable Class
  *
  */
-public class HashEntry {
+public class HashEntry implements Comparable<Object> {
 	
 	/**
 	 * Stores the String in each Hash entry.
@@ -51,6 +51,36 @@ public class HashEntry {
 		this.value = value;
 	}
 	
+	@Override
+	public boolean equals(Object obj1){
+		if(obj1 instanceof HashEntry){
+			if(this.key.equals(((HashEntry) obj1).key)){
+				return true;
+			}
+		}
+		
+			return false;
+		}
+	
 	
 
-}
+	@Override
+	public int compareTo(Object obj1) {
+		if(obj1 instanceof HashEntry){
+			if(this.value == ((HashEntry) obj1).value){
+				return this.key.compareTo(((HashEntry)obj1).key);
+			}
+		    return this.value - ((HashEntry)obj1).value;
+		  
+			  
+		  }
+		return 0;
+		}
+	
+		
+	}
+	
+	
+	
+
+
