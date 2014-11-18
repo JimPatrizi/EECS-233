@@ -29,12 +29,20 @@ public class WordStatFundTest {
 		assertEquals("The count should be 2 for is",2,ws.wordCount("is"));
 	}
 	@Test
+	public void testWordRank(){
+		String test [] = {"This is the First Sentence!","This is the SECOND sentence$","@Just the third sentence"};
+		WordStat ws = new WordStat (test);
+		assertEquals("Should be word rank 1", 1, ws.wordRank("the"));
+		assertEquals("Should be word rank 1", 1, ws.wordRank("sentence"));
+		assertEquals("Should be word rank 3", 3, ws.wordRank("is"));
+	}
+	@Test
 	public void testMostCommonWords(){
 		String test [] = {"This is the First Sentence!","This is the SECOND sentence$","@Just the third sentence"};
 		WordStat ws = new WordStat (test);
 		String[] common = ws.mostCommonWords (2);
-		assertTrue("This method should return a String array of the k most common words in descending"+
-				" order of their count",true);
+		String[] theoretical = {"sentence", "the"};
+		assertArrayEquals(common, theoretical);
 	}
 	
 	@Test
@@ -78,9 +86,7 @@ public class WordStatFundTest {
 	public void testMostCommonCollocsExc(){
 		String test [] = {"This is the First Sentence!","This is the SECOND sentence$","@Just the third sentence"};
 		WordStat ws = new WordStat (test);
-		ArrayList<String> exc = new ArrayList<String>();
-		exc.add("is");
-		exc.add("the");
+		String exc [] = {"the", "is"};
 		String[] common = ws.mostCommonCollocsExc(2,"This",4,exc);
 		assertTrue("returns the k most common words at a given relative position i to baseWord"
 				+"excluding the words in  exclusions array",true);

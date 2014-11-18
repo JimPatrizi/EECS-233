@@ -70,7 +70,7 @@ public class HashEntry implements Comparable<Object> {
 			if(this.value == ((HashEntry) obj1).value){
 				return this.key.compareTo(((HashEntry)obj1).key);
 			}
-		    return this.value - ((HashEntry)obj1).value;
+		    return ((HashEntry)obj1).value - this.value;
 		  
 			  
 		  }
