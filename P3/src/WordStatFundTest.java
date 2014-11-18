@@ -40,8 +40,8 @@ public class WordStatFundTest {
 	public void testMostCommonWords(){
 		String test [] = {"This is the First Sentence!","This is the SECOND sentence$","@Just the third sentence"};
 		WordStat ws = new WordStat (test);
-		String[] common = ws.mostCommonWords (2);
-		String[] theoretical = {"sentence", "the"};
+		String[] common = ws.mostCommonWords (3);
+		String[] theoretical = {"sentence", "the","is"};
 		assertArrayEquals(common, theoretical);
 	}
 	
@@ -49,16 +49,18 @@ public class WordStatFundTest {
 	public void testLeastCommonWords(){
 		String test [] = {"This is the First Sentence!","This is the SECOND sentence$","@Just the third sentence"};
 		WordStat ws = new WordStat (test);
-		String[] common = ws.mostCommonWords (3);
-		assertTrue("This method should return a String array of the k least common words in descending"+
-				" order of their count",true);
+		String[] common = ws.leastCommonWords (3);
+		String[] theoretical = {"third", "second", "just"};
+		assertArrayEquals(common,theoretical);
 	}
 	@Test
 	public void testWordPairCount(){
 		String test [] = {"This is the First Sentence!","This is the SECOND sentence$","@Just the third sentence"};
 		WordStat ws = new WordStat (test);
 		int count = ws.wordPairCount ("the","sentence");
-		assertTrue("This method should return the count of the pair of words",true);
+		assertEquals("This method should return the count of the pair of words", 0, count);
+		int count1 = ws.wordPairCount("This", "is");
+		assertEquals("This method should return the count of the pair of words", 2, count1);
 	}
 	@Test
 	public void testWordPairRank(){

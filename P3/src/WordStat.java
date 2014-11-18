@@ -40,29 +40,27 @@ public class WordStat {
 	    listOfEntries = table.getHashArray();
 		rankarray = listOfEntries.toArray(new HashEntry[(int)(table.getNumItems())]);
 		Arrays.sort(rankarray);
-		/**
-		listOfEntries = new ArrayList<HashEntry>();
-		for(int i = 0; i < rankarray.length;i++){
-			listOfEntries.add(rankarray[i]);
-		}
-		Collections.reverse(listOfEntries);//next line rankarray has in order all specfied values, so rank is based on index.
-		rankarray = listOfEntries.toArray(rankarray);//do I need to specifiy that toArray(rankarray)?
-			**/
 		
-		pairlist = new Tokenizer(array).wordList();
+		
+		list = new Tokenizer(array).wordList();
+		pairlist = new ArrayList<String>(list.size());
 		pairtable = new HashTable(list.size() * 2);
 		listOfEntries = new ArrayList<HashEntry>(pairtable.getNumItems());
-		for(int i = 0; i < pairlist.size()-1; i++){
-			
-		}
-		for(String i : pairlist){
-			int count = pairtable.get(i);
-			if(count == -1){
-				pairtable.update(i,1);
+		
+		pairtable = new HashTable((list.size()-1)*2);
+		int i = 0;
+		int j = 1;
+		int value;
+		while(j < list.size()){
+			value = pairtable.get(list.get(i) + " " + list.get(j));
+			if(value == -1){
+				pairtable.update(list.get(i) + " " + list.get(j), 1);
 			}
 			else{
-				pairtable.update(i,count +1);
+				table.update(list.get(i) + " " + list.get(j), value +1);
 			}
+			i++;
+			j++;
 		}
 		}
 			
@@ -106,15 +104,31 @@ public class WordStat {
 	}
 	
 	public String[] mostCommonWords(int k){
-		return null;
+		String[] common = new String[k];
+		for(int i = 0 ; i < k; i++){
+			common[i] = rankarray[i].getKey();
+		}
+		return common;
 	}
 	
 	public String[] leastCommonWords(int k){
-		return null;
+		String[] leastcommon = new String[k];
+		for(int i = 0; i < k; i++){
+			leastcommon[i] = rankarray[(rankarray.length-1) - i].getKey();
+		}
+		return leastcommon;
 	}
 	
+	
+	
 	public int wordPairCount(String w1, String w2){
-		return 0;
+		String wordpair = (w1.toLowerCase().replaceAll("\\s+","").replaceAll("\\W",""))+ " " + (w2.toLowerCase().replaceAll("\\s+","").replaceAll("\\W",""));
+		if(table.get(wordpair) == -1){
+			return 0;
+		}
+		else{
+			return table.get(wordpair);
+		}
 	}
 	
 	public int wordPairRank(String w1, String w2){
