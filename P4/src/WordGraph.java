@@ -1,3 +1,7 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  * 
  * @author James Patrizi
@@ -7,11 +11,20 @@
  */
 public class WordGraph {
 
+	/**
+	 * List of the Words and holds the tokenized file.
+	 */
+	public ArrayList<String> list;
 	private WordNode[] words;
-	private int numWords;
-	private int maxNum;
-	public WordGraph(String file){
-		
+	public int numWords;
+	public int maxNum;
+	
+	
+	public WordGraph(String file) throws IOException, FileNotFoundException{
+		list = new Tokenizer(file).wordList();
+		words = new WordNode[list.size()];
+		numWords = 0;
+		maxNum = list.size();
 	}
 	
 	public int numNodes(){
@@ -23,6 +36,7 @@ public class WordGraph {
 	}
 	
 	public int wordCount(String w){
+		w = w.toLowerCase().replaceAll("\\s+","").replaceAll("\\W","").replaceAll("\\p{Punct}+", "");
 		return 0;
 	}
 	

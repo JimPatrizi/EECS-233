@@ -51,6 +51,11 @@ public class HashEntry implements Comparable<Object> {
 		this.value = value;
 	}
 	
+	/**
+	 * Lets instances of HashEntries be equated to.
+	 * @param obj1 - object to be compared, but checked to see that's a HashEntry.
+	 * @return - true if objects are equal, false if not.
+	 */
 	@Override
 	public boolean equals(Object obj1){
 		if(obj1 instanceof HashEntry){
@@ -62,12 +67,16 @@ public class HashEntry implements Comparable<Object> {
 			return false;
 		}
 	
-	
-
+	/**
+	 * Compares HashEntries first by value, and then if same value sorts alphabetically.
+	 * @param obj1 Compares object which is a HashEntry by value, and if the same value, compares alphabetically
+	 * @return 1 if value is greater, -1 if value is less. If same value returns -1 if not in alphabet order
+	 */
 	@Override
 	public int compareTo(Object obj1) {
 		if(obj1 instanceof HashEntry){
 			if(this.value == ((HashEntry) obj1).value){
+				//Compares key alphabetically instead of by value if values are the same.
 				return this.key.compareTo(((HashEntry)obj1).key);
 			}
 		    return ((HashEntry)obj1).value - this.value;

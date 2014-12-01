@@ -10,12 +10,12 @@ public class WordPair {
 	/**
 	 * Second vertex of the word pair.
 	 */
-	private WordNode endNode;
+	public WordNode target;
 	
 	/**
-	 * Edge Cost
+	 * Edge Cost. Also the the word pair count between the word pair.
 	 */
-	private double cost;
+	public double cost;
 	
 	/**
 	 * Makes the edge in the graph between this edge to the next node and the cost of this path.
@@ -23,7 +23,7 @@ public class WordPair {
 	 * @param c - cost of this next word.
 	 */
 	public WordPair(WordNode w1, double c){
-		this.endNode = w1;
+		this.target = w1;
 		this.cost = c; 
 	}
 	
