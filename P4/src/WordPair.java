@@ -27,5 +27,13 @@ public class WordPair {
 		this.cost = c; 
 	}
 	
+	public boolean equals(WordPair other){
+		return target.equals(other.target);
+	}
+	
+	public void increaseCount(){
+		cost = cost+1;
+	}
+	
 	
 }
