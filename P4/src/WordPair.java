@@ -22,7 +22,7 @@ public class WordPair {
 	 * @param w1 - next word in the adjacency list. 
 	 * @param c - cost of this next word.
 	 */
-	public WordPair(WordNode w1, double c){
+	public WordPair(WordNode w1, int c){
 		this.target = w1;
 		this.cost = c; 
 	}

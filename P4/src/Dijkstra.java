@@ -44,8 +44,8 @@ public class Dijkstra {
 	WordNode v2 = new WordNode("Greenville");
 	WordNode v3 = new WordNode("Orangeville");
 	WordNode v4 = new WordNode("Purpleville");
-
-	v0.adjacencies = new WordPair[]{ new WordPair(v1, 5),
+/**
+	v0.adjacencies = new LinkedList<WordPair>(v1,5) new WordPair(v1, 5),
 	                             new WordPair(v2, 10),
                                new WordPair(v3, 8) };
 	v1.adjacencies = new WordPair[]{ new WordPair(v0, 5),
@@ -66,5 +66,7 @@ public class Dijkstra {
 	    System.out.println("Path: " + path);
 	}
     }
+    **/
 
+}
 }

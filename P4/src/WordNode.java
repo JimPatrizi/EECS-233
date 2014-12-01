@@ -22,7 +22,7 @@ public class WordNode implements Comparable<WordNode> {
 	/**
 	 * adjacency list 
 	 */
-	public WordPair[] adjacencies; //adjacency list
+	public LinkedList<WordPair> adjacencies; //adjacency list
 	
 	/**
 	 * If this vertice has been encountered in the graph or not.

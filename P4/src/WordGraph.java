@@ -63,6 +63,26 @@ public class WordGraph {
 	public String generatePhrase(String startWord, String endWord, int N){
 		return "";
 	}
+	//dont know if this is right.
+	public int addNode(String word , int cost){
+		if(numWords == maxNum){
+			WordNode[] copyarray = new WordNode[maxNum*2];
+			for(int i = 0; i < words.length;i++){
+				copyarray[i]= words[i];
+			}
+			words = copyarray;
+		}
+		words[numWords] = new WordNode(word, cost);
+		numWords++;
+		return numWords-1;//returns the index
+	}
+	//this is probably wrong and isnt finished
+	public void addEdge(String word1, String word2, int cost){
+		//add an edge from i to j
+		WordNode newNode = new WordNode(word2,cost);
+		WordPair newPair = new WordPair(newNode, cost);
+		
+	}
 	
 	public static void main(String[] args){
 		
