@@ -50,7 +50,7 @@ public class WordNode implements Comparable<WordNode> {
 	/**
 	 * Cost of this node aka count.
 	 */
-	private double cost;
+	//private double cost;
 	
 	/**
 	 * Constructor of the word node. Sets the name of the node. 
@@ -70,13 +70,15 @@ public class WordNode implements Comparable<WordNode> {
 		
 	}
 	
-	public boolean equals(WordNode other){
-		if(this.word.equals(other.word)){
+	@Override
+	public boolean equals(Object obj){
+		if(obj instanceof WordNode){
+			if(this.equals(((WordNode)obj).word)){
 			return true;
+			}
 		}
-		else{
-			return false;
-		}
+		return false;
+
 	}
 	
 	public void increaseCount(){

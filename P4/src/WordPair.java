@@ -32,7 +32,7 @@ public class WordPair {
 	}
 	
 	public void increaseCount(){
-		cost = cost+1;
+		cost = cost + 1;
 	}
 	
 	

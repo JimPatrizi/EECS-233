@@ -28,7 +28,6 @@ public class WordGraph {
 		
 		//handles the first word of the list
 		WordNode inital = new WordNode(list.get(0),1);
-		inital.counts = 1;
 		words.add(inital);
 		WordNode second = new WordNode(list.get(1), 1);
 		words.add(second);
@@ -42,7 +41,27 @@ public class WordGraph {
 		int j = 1;
 		int k = 2;
 		
+		WordNode iNode = inital;
+		WordNode jNode = second;
+		WordNode kNode = null;
+		
 		while(k < list.size()){
+			/**
+			WordNode temp = new WordNode(list.get(j),1);
+			if(words.contains(temp)){
+				jNode = words.get(words.indexOf(temp));
+				jNode.increaseCount();//by 1
+			}
+			else{
+				jNode = new WordNode(list.get(j),1);
+				words.add(jNode);
+			}
+			**/
+			
+			WordPair tempJI = new WordPair(iNode,1);
+			if(jNode.adjbackward.contains(tempJI)){
+				
+			}
 			
 		}
 		
