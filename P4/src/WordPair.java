@@ -27,6 +27,7 @@ public class WordPair {
 		this.cost = c; 
 	}
 	
+	@Override
 	public boolean equals(Object other){
 		if(other instanceof WordPair){
 			return target.equals(((WordPair) other).target);

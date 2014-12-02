@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 
@@ -16,8 +18,7 @@ public class WordGraph {
 	 */
 	public ArrayList<String> list;
 	public ArrayList<WordNode> words;
-	public int numWords;
-	public int maxNum;
+	
 
 
 	public WordGraph(String file) throws IOException, FileNotFoundException{
@@ -59,7 +60,7 @@ public class WordGraph {
 					jNode.adjbackward.add(tempJI);
 				}
 				
-				//the index k
+				//the index kth word
 				WordNode temp = new WordNode(list.get(k),1);
 				//increases count if already present of node.
 				if(words.contains(temp)){
@@ -130,22 +131,27 @@ public class WordGraph {
 		w = w.toLowerCase().replaceAll("\\s+","").replaceAll("\\W","").replaceAll("\\p{Punct}+", "");
 		WordNode temp = new WordNode(w,-1);
 		if(words.contains(temp)){
-			temp = words.get(words.indexOf(temp));
-			int degree = temp.adjbackward.size();
-			return degree;
+			List<String> next = new ArrayList<String>();
+			for(WordPair word : temp.adjbackward){
+				nextWordsRecursive(next, word.target);
+			}
+			return next.size();
 		}
 		else{
 		return -1;
 		}
 	}
 
+	//size of the nextwords string[]
 	public int outDegree(String w){
 		w = w.toLowerCase().replaceAll("\\s+","").replaceAll("\\W","").replaceAll("\\p{Punct}+", "");
 		WordNode temp = new WordNode(w,-1);
 		if(words.contains(temp)){
-			temp = words.get(words.indexOf(temp));
-			int degree = temp.adjforward.size();
-			return degree;
+			List<String> next = new ArrayList<String>();
+			for(WordPair word : temp.adjforward){
+				nextWordsRecursive(next, word.target);
+			}
+			return next.size();
 		}
 		else{
 		return -1;
@@ -174,14 +180,24 @@ public class WordGraph {
 		WordNode temp = new WordNode(w,-1);
 		if(words.contains(temp)){
 			temp = words.get(words.indexOf(temp));	
-			String[] nextwords = new String[temp.adjforward.size()];
-			for(int i = 0 ; i < nextwords.length ;i++){
-				nextwords[i] = temp.adjforward.get(i).target.word;
+			List<String> next = new ArrayList<String>();
+			for(WordPair word : temp.adjforward){
+				nextWordsRecursive(next, word.target);
 			}
-			return nextwords;
+			String[] array = next.toArray(new String[next.size()]);
+			return array;
 		}
 		else{
-			return null;	
+			return new String[0];	
+		}
+	}
+
+	private void nextWordsRecursive(Collection<String> next, WordNode target) {
+		next.add(target.word);
+		for(WordPair word : target.adjforward){
+			if (!next.contains(word.target.word)) {
+				nextWordsRecursive(next, word.target);
+			}
 		}
 	}
 
