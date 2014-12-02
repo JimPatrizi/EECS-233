@@ -22,12 +22,12 @@ public class WordNode implements Comparable<WordNode> {
 	/**
 	 * adjacency list forward
 	 */
-	public LinkedList<WordPair> adjforward; //adjacency list forward
+	public LinkedList<WordPair> adjforward = new LinkedList<WordPair>(); //adjacency list forward
 	
 	/**
 	 * adjacency list backward
 	 */
-	public LinkedList<WordPair> adjbackward; //adjacent list backward for out degree
+	public LinkedList<WordPair> adjbackward = new LinkedList<WordPair>(); //adjacent list backward for out degree
 	
 	/**
 	 * If this vertice has been encountered in the graph or not.
@@ -61,8 +61,6 @@ public class WordNode implements Comparable<WordNode> {
 	public WordNode(String word, int count){
 		this.word = word;
 		this.counts = count;
-		adjforward = new LinkedList<WordPair>();
-		adjbackward = new LinkedList<WordPair>();
 	}
 	
 	public int compareTo(WordNode other){
@@ -73,16 +71,15 @@ public class WordNode implements Comparable<WordNode> {
 	@Override
 	public boolean equals(Object obj){
 		if(obj instanceof WordNode){
-			if(this.equals(((WordNode)obj).word)){
-			return true;
-			}
+			return word.equals(((WordNode) obj).word);
 		}
-		return false;
-
+		else{
+			return false;
+		}
 	}
-	
-	public void increaseCount(){
-		counts = counts + 1;
+			
+	public void increaseCount(int i){
+		counts = counts + i;
 	}
 	
 	public String toString(){
