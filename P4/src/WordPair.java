@@ -15,7 +15,7 @@ public class WordPair {
 	/**
 	 * Edge Cost. Also the the word pair count between the word pair.
 	 */
-	public double cost;
+	public int cost;
 	
 	/**
 	 * Makes the edge in the graph between this edge to the next node and the cost of this path.

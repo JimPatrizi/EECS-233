@@ -26,27 +26,6 @@ public class Dijkstra {
 		}
 	}
 	
-	public static void computePathsMax(WordNode source){
-		source.minDistance = 0;
-		PriorityQueue<WordNode> wordNodeQueue = new PriorityQueue<WordNode>();
-		wordNodeQueue.add(source);
-
-		while(!wordNodeQueue.isEmpty()){
-			WordNode u = wordNodeQueue.poll();
-
-			for(WordPair p : u.adjforward){
-				WordNode node = p.target;
-				double weight = p.cost;
-				double distanceThroughU = u.minDistance + weight;
-				if(distanceThroughU > node.minDistance){
-					wordNodeQueue.remove(node);
-					node.minDistance = distanceThroughU;
-					node.parent = u;
-					wordNodeQueue.add(node);
-				}
-			}
-		}
-	}
 	
 	
 	public static ArrayList<WordNode> getShortestPathTo(WordNode target){

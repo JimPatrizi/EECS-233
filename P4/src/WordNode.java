@@ -82,6 +82,17 @@ public class WordNode implements Comparable<WordNode> {
 		counts = counts + i;
 	}
 	
+	public int costTo(WordNode other){
+		WordPair temp = new WordPair(other, 1);
+		int index = adjforward.indexOf(temp);
+		if(index != -1){
+			return adjforward.get(index).cost;
+		}
+		else{
+			return -1;
+		}
+	}
+	
 	public String toString(){
 		return word;
 	}
